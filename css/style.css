@@ -1,0 +1,22 @@
+html, body {
+  margin: 0;
+  font-family: monospace;
+  height: 100%;
+}
+
+canvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  display: block;
+  z-index: -1;
+}
+
+#b {
+  position: absolute;
+  top: 10px;
+  width: 100%;
+  text-align: center;
+  z-index: 2;
+}
