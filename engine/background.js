@@ -4,6 +4,11 @@ var run_animation = true;
 var animationId = -1;
 
 async function main() {
+  const link = document.createElement("link");
+  link.rel = "stylesheet";
+  link.href = "/css/background.css";
+  document.head.appendChild(link);
+
   const m4 = twgl.m4;
   const v3 = twgl.v3;
   const canvas_region = document.getElementById("c");
@@ -76,10 +81,11 @@ async function main() {
   let previousTime = 0;
 
   const fov = 30 * Math.PI / 180;
-  const aspect = gl.canvas.clientWidth / gl.canvas.clientHeight;
+  let aspect = gl.canvas.clientWidth / gl.canvas.clientHeight;
+
   const zNear = 0.5;
   const zFar = 500;
-  const projection = m4.perspective(fov, aspect, zNear, zFar);
+  let projection = m4.perspective(fov, aspect, zNear, zFar);
   const radius = 20;
   let eye = [0, 20, 0];
   const target = [0, -2, 0];
@@ -158,6 +164,8 @@ async function main() {
     twgl.resizeCanvasToDisplaySize(gl.canvas);
     gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
 
+    aspect = gl.canvas.clientWidth / gl.canvas.clientHeight;
+    projection = m4.perspective(fov, aspect, zNear, zFar);
     gl.enable(gl.DEPTH_TEST);
     gl.enable(gl.CULL_FACE);
     gl.clearColor(0.15, 0.15, 0.15, 1.0);
@@ -183,14 +191,30 @@ async function main() {
   animationId = requestAnimationFrame(render);
 
   function add_stop_button(){
-    var button_region = document.getElementById("stop-button-region");
-    let button = document.createElement("button");
-    button_region.appendChild(button);
-    button.textContent = "Pause Animation";
-    button_region.style.position = "fixed";
-    button_region.style.left = "20px";
-    button_region.style.bottom = "20px";
+    const button_region = document.createElement("div");
+    button_region.id = "stop-button-region";
 
+    const button = document.createElement("button");
+    button.id = "stop-button";
+    button_region.appendChild(button);
+
+    document.body.appendChild(button_region);
+    
+    button.classList.add(
+      "inline-block",         "cursor-pointer",
+      "item-center",          "justify-center",
+      "rounded-lg",           "border",
+      "border-zinc-600",      "bg-zinc-950",
+      "px-3",                 "py-2",
+      "font-medium",          "text-slate-200",
+      "shadow-md",            "transition-all",
+      "duration-300",         "hover:-translate-y-0.5",
+      "hover:shadow-xl",      "text-sm",
+      "stop-animation-button"
+    )
+    button.textContent = "Stop Animation";
+
+    // handle the animation state
     button.addEventListener("click", () => {
       if (run_animation) {
         run_animation = false;
@@ -199,7 +223,7 @@ async function main() {
       } else {
         run_animation = true;
         animationId = requestAnimationFrame(render);
-        button.textContent = "Pause Animation";
+        button.textContent = "Stop Animation";
         previousTime = 0;
       }
     });
@@ -207,6 +231,7 @@ async function main() {
   }
 
   add_stop_button();
+
 }
 
 main();
