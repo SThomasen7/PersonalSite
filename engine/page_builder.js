@@ -1,5 +1,5 @@
 import { Banner } from './banner.js';
-import { Contents } from './content-body.js';
+import { Contents } from './content_body.js';
 
 
 function build(){
