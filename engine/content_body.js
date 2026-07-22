@@ -36,7 +36,8 @@ const Contents = (() => {
       "border-slate-600/40",      "bg-slate-800/65",
       "backdrop-blur-lg",         "shadow-lg",
       "border",                   "overflow-y-auto",
-      "flex",                     "flex-col"
+      "flex",                     "flex-col",
+      "items-center",
     );
 
   }
@@ -188,14 +189,14 @@ University of Michigan Ann Arbor - GPA: 3.4/4.0
     const div = document.createElement("div");
     div.classList.add("w-[95%]", "rounded-md", "bg-slate-800", 
         "m-[10px]", "min-h-[100px]", "border-slate-500/40",
-        "shadow-lg", "border", "p-[20px]");
+        "shadow-lg", "border", "p-[20px]", "flex", "flex-col");
 
     if(header){
       const title_div = document.createElement("div");
       title_div.classList.add("flex", "flex-row", "justify-between");
       title_div.innerHTML = `
         <p class="font-bold text-2xl">${header}</p>
-        <p class="italic text-lg">${note}</p>
+        <p class="italic text-xl">${note}</p>
       `;
       div.appendChild(title_div);
     }
@@ -217,25 +218,28 @@ University of Michigan Ann Arbor - GPA: 3.4/4.0
         "shadow-lg", "border", "p-[20px]");
 
     contact_form.innerHTML = `
+    <h3 class="text-4xl font-bold">Drop me a line!</h3>
+    <p class="text-xl">Send an email or leave a note below.</p>
+    <br>
     <form>
     <div class="grid gap-6 mb-6 md:grid-cols-2">
         <div>
-            <label for="name" class="block mb-2.5 text-base text-heading">Name</label>
-            <input type="text" id="Name" class="bg-neutral-secondary-medium border border-default-medium text-heading text-base rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" placeholder="" required />
+            <label for="name" class="block mb-2.5 text-xl text-heading">Name</label>
+            <input type="text" id="Name" class="bg-neutral-secondary-medium border border-default-medium text-heading text-xl rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" placeholder="" required />
         </div>
         <div>
-            <label for="email" class="block mb-2.5 text-base font-medium text-heading">Email address</label>
-            <input type="email" id="email" class="bg-neutral-secondary-medium border border-default-medium text-heading text-base rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" placeholder="" required />
+            <label for="email" class="block mb-2.5 text-xl font-medium text-heading">Email address</label>
+            <input type="email" id="email" class="bg-neutral-secondary-medium border border-default-medium text-heading text-xl rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" placeholder="" required />
         </div>
     </div>
     <div class="mb-6">
-      <label for="email_content" class="block mb-2.5 text-base font-medium text-heading">Message</label>
+      <label for="email_content" class="block mb-2.5 text-xl font-medium text-heading">Message</label>
       <textarea
         id="email_content"
         rows="5"
-        class="bg-neutral-secondary-medium border border-default-medium text-heading text-base rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2"></textarea>
+        class="bg-neutral-secondary-medium border border-default-medium text-heading text-xl rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2"></textarea>
     </div>
-    <button type="Send" class="inline-block cursor-pointer item-center justify-center rounded-lg border border-zinc-600 bg-zinc-950 px-3 py-2 font-medium text-slate-200 shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl text-sm">Submit</button>
+    <button type="Send" class="inline-block cursor-pointer item-center justify-center rounded-lg border border-zinc-600 bg-zinc-950 px-3 py-2 font-medium text-slate-200 shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl text-xl">Submit</button>
 </form>
   `;
     content_div.appendChild(contact_form);
@@ -301,7 +305,7 @@ University of Michigan Ann Arbor - GPA: 3.4/4.0
         authors: "Juan Vásquez, Gemma Bel-Enguix, Scott Thomas Andersen, and Sergio-Luis Ojeda-Trueba",
         primary: "2022. HeteroCorpus: A Corpus for Heteronormative Language Detection. ",
         secondary: "In Proceedings of the 4th Workshop on Gender Bias in Natural Language Processing (GeBNLP), <br> pages 225–234, Seattle, Washington.",
-        year: "2023"
+        year: "2022"
       },
     ];
 
@@ -346,21 +350,47 @@ University of Michigan Ann Arbor - GPA: 3.4/4.0
     sessionStorage.setItem('currentTab', 'projects');
     content_div.innerHTML = "";
 
+    const content_container = document.createElement("div");
+    content_container.classList.add("flex", "flex-col", "items-center");
+
+    content_container.classList.add("w-[95%]", "rounded-md", "bg-slate-800", 
+        "m-[10px]", "border-slate-500/40",
+        "shadow-lg", "border", "p-[15px]");
+
+    let disclaimer = document.createElement("div");
+    content_container.classList.add("flex");
+    content_container.innerHTML = `
+      <h3 class="text-3xl font-bold mb-3"> A note on AI Usage </h3>
+      <p class="w-full break-words">
+      Although I think AI and Agentic AI Coding tools have an important role in modern
+      programming, the purpose of this website is to showcase my abilities, not those
+      of an LLM.
+      Therefore I pledge that the projects below were created by me, any AI used was as
+      a search tool for documentation or understanding an error, the code in these projects
+      was proudly human generated.
+      </p>
+    `;
+    content_div.appendChild(content_container);
+
     let grid = document.createElement("div");
-    grid.classList.add("grid", "grid-cols-1", "md:grid-cols-2", "gap-4");
+    grid.classList.add("grid", "grid-cols-1", "md:grid-cols-2", "gap-4", "w-[95%]");
 
     // List of projects
     let projects = [
       {
         title: "Plant Tracking",
         link: "https://github.com/SThomasen7/PlantTracking",
-        desc: `Python project to detect plants, count, and track plants
-               at a fruit farm. This project has used multiple computer vision
-               methods as well as YoloV26 for plant detection. <br>
-               This project started with traditional computer vision methods to detect
-               plants, these initial frames from videos were used along with a hand annotated
-               set of images to fine tune a Yolo model for plant detection and counting.
-              `,
+        desc: `
+        This project was in assistance to a friend who worked at a berry farm.
+        They were looking for a tool to help them automatically count the number of plants
+        to track their growth over time. 
+        <br>
+        This project was developed in Python and uses OpenCV as well as YOLOv26 for
+        detection and tracking of strawberry sprouts. First, traditional methods
+        were used to segment and group leaves as individual plants. This was then
+        used to fine tune YOLOv26 to improve automatic plant classification.
+        <br> <br>
+        `,
         image: "/static/projects/plant_tracking_thumbnail.png",
         tags: [
                 {tag: "Python", color: "bg-yellow-700"},
@@ -371,12 +401,85 @@ University of Michigan Ann Arbor - GPA: 3.4/4.0
       {
         title: "CUDA Ray Tracer",
         link: "https://github.com/SThomasen7/CudaRayTracer",
-        desc: `FIXME`,
+        desc: `
+        This is just one of many RayTracers that I have developed as a hobby project.
+        What I am particularly proud of this one is that it is developed using CUDA to
+        significantly speed up the rendering process. 
+        <br>
+        This was developed in C++ and uses CUDA to parallelize the per pixel ray casting
+        and object collision testing. 
+        <br> <br>
+        `,
         image: "/static/projects/cuda_ray_tracer.jpg",
         tags: [
                 {tag: "C++", color: "bg-yellow-700"},
                 {tag: "Cuda", color: "bg-green-700"},
                 {tag: "Computer Graphics", color: "bg-sky-700"},
+              ]
+      },
+      {
+        title: "Blizzard Detection",
+        link: "https://github.com/SThomasen7/BlizzardDetection/tree/main",
+        desc: `
+        This project was the final project for a data science course during
+        my graduate certificate in Climate and Weather Risk and Data Analytics.
+        <br>
+
+        In most climate literature, future projections of climate change impact on snowstorms
+        do not use the actual NWS definition of a blizzard. That's because this defintiion
+        classifies a blizzard based on the visibility from falling or blowing snow. i.e., it does
+        not necessarily need to be snowing for a blizzard to be present. This creates
+        a disparity between weather forcasting and climate projections for these types
+        of winter storms.
+        <br>
+
+        Most literature classifies winter storms based on snowfall or a composite of snowfall
+        and wind speed. This project demonstrates that considering other factors that
+        suggest how much snow can be transported by wind, such as snow layer temperature and
+        snow density, leads to much more accurate detection of blizzards.
+        <br>
+
+        A dataset of blizzard events was created by combining NCEI's Storm Event dataset
+        and ERA5 gridded climate reanalysis data, and detection was done with various algorithms
+        using wind speed and snowfall, as well as snow density and snow surface temperature.
+        Demonstrating that taking these variables into account improved substantially classification.
+        <br> <br>
+
+        `,
+        image: "/static/projects/blizzard_detection.png",
+        tags: [
+                {tag: "Python", color: "bg-yellow-700"},
+                {tag: "GeoSpatial Computing", color: "bg-sky-700"},
+                {tag: "Data Science", color: "bg-sky-700"},
+              ]
+      },
+      {
+        title: "Tweet Annotation Platform",
+        link: "https://github.com/SThomasen7/EncuestaHomoMex",
+        desc: `
+        This project was for the Language Engineering Group at UNAM, we were attempting to compile
+        a dataset of Tweets that contained LGBT+ - phobic speech in Mexican Spanish. We compiled
+        the tweets but needed annotators to label the data appropriately. 
+
+        <br>
+
+        This site was created so they could easily see the post text rendered as a tweet and select
+        the relevant labels, gay-phobic, lesbo-phobic, etc. Prior to this a simple excel spreadsheet
+        was being used, which made annotation difficult, cumbersome, and more error prone.
+
+        <br>
+
+        The compiled dataset led to several publications under the HomoMex project, available in the
+        publications tab of this website.
+
+        <br> <br>
+        `,
+        image: "/static/projects/encuesta_homo_mex.png",
+        tags: [
+                {tag: "Python", color: "bg-yellow-700"},
+                {tag: "Flask", color: "bg-green-700"},
+                {tag: "Full Stack Development", color: "bg-sky-700"},
+                {tag: "Social Computing", color: "bg-sky-700"},
               ]
       },
     ]
@@ -385,7 +488,7 @@ University of Michigan Ann Arbor - GPA: 3.4/4.0
     const createProjectCell = ((project) => {
 
       let div = document.createElement("div");
-      div.classList.add("w-[95%]", "rounded-md", "bg-slate-800", 
+      div.classList.add("w-full", "rounded-md", "bg-slate-800", 
           "m-[10px]", "min-h-[100px]", "border-slate-500/40",
           "shadow-lg", "border", "p-[20px]");
 
@@ -466,7 +569,7 @@ University of Michigan Ann Arbor - GPA: 3.4/4.0
       "font-medium",          "text-slate-200",
       "shadow-md",            "transition-all",
       "duration-300",         "hover:-translate-y-0.5",
-      "hover:shadow-xl",      "text-base",
+      "hover:shadow-xl",      "text-md",
       "active:bg-zinc-950",   "active:border-zinc-950"
     )
     button.textContent = name;
