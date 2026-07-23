@@ -234,15 +234,15 @@ University of Michigan Ann Arbor - GPA: 3.4/4.0
     <h3 class="text-4xl font-bold">Drop me a line!</h3>
     <p class="text-xl">Send an email or leave a note below.</p>
     <br>
-    <form>
+    <form action="/contactme" method="post">
     <div class="grid gap-6 mb-6 md:grid-cols-2">
         <div>
             <label for="name" class="block mb-2.5 text-xl text-heading">Name</label>
-            <input type="text" id="Name" class="bg-neutral-secondary-medium border border-default-medium text-heading text-xl rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" placeholder="" required />
+            <input name="name" type="text" id="Name" class="bg-neutral-secondary-medium border border-default-medium text-heading text-xl rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" placeholder="" required />
         </div>
         <div>
             <label for="email" class="block mb-2.5 text-xl font-medium text-heading">Email address</label>
-            <input type="email" id="email" class="bg-neutral-secondary-medium border border-default-medium text-heading text-xl rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" placeholder="" required />
+            <input name="email" type="email" id="email" class="bg-neutral-secondary-medium border border-default-medium text-heading text-xl rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" placeholder="" required />
         </div>
     </div>
     <div class="mb-6">
@@ -250,6 +250,7 @@ University of Michigan Ann Arbor - GPA: 3.4/4.0
       <textarea
         id="email_content"
         rows="5"
+	name="message"
         class="bg-neutral-secondary-medium border border-default-medium text-heading text-xl rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2"></textarea>
     </div>
     <button type="Send" class="inline-block cursor-pointer item-center justify-center rounded-lg border border-zinc-600 bg-zinc-950 px-3 py-2 font-medium text-slate-200 shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl text-xl">Submit</button>
