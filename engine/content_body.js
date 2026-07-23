@@ -52,53 +52,66 @@ const Contents = (() => {
     
     content_container.appendChild(sectionDelimiter("Experience"));
     let box_oracle_1 = getBox("Oracle -- Senior Member of the Technical Staff",
-                                "June 2023 - Present",
+                                "Jun. 2023 - Present",
 ` <br>
-  - Developed and maintained various automation tools to detect changes that
-    cause code regressions, file bugs, and reduce developer workload. <br>
-  - Proposed and developed a validation tool to confirm another tool's result,
-    automating a painful part of the testing process and saving to date 600+ hours
-    of manual labor from 2000+ validation job submissions. <br>
-  - Designed a framework to detect anomalies in data processed by automation
-    tools, which is now running for three separate tools and has reported over 1100
-    anomalies that warranted manual intervention which would have gone missed. <br>
-  - Collaborated in the design and development of an internal AI platform to make
-    LLM usage accessible, and facilitate the creation of AI agents and workflows,
-    which hosts 22 apps, with 16 more in development from a diverse set of teams. <br>
+  I work in Automation tools in the Database Org at Oracle. My responsibilities
+  involve developing and maintaining tools to assist with the testing and triage
+  process. These include tools that automate bug filing, detecting the change that
+  caused regressions, and an internal platform for creating AI powered workflows.
+  <br> <br>
+
+  These tools are considered critical to the business and collectively automate
+  thousands of task each day. I also manage reporting tools to monitor their
+  behavior, notify developers when anomalies are detected. <br> <br>
+
+  I've created several smaller auxiliary tools for managing tasks on our team,
+  of which we've now have recorded thousands of jobs processed saving to date hundreds
+  of ours of manual labor. <br>
 `);
     content_container.appendChild(box_oracle_1);
 
     let box_oracle_2 = getBox("Oracle -- Intern",
-                                "August 2022 - June 2023",
+                                "Aug. 2022 - Jun. 2023",
 ` <br>
-  - Designed and implemented a test framework for JDBC library with Oracle
-    Cloud databases, effectively doubling existing testing capacity. <br>
-  - Developed testing tool that manipulates connections between a program and a
-    database to make erroneous behavior reproducible to test driver’s behavior in
-    disaster scenarios. <br>
+  I worked on the testing team for the JDBC library that facilitates connections
+  between java programs the database. I expanded our testing framework to allow
+  the execution of our existing tests built for a local database to Oracle cloud
+  database instances. <br> <br>
+
+  During my internship I also created a testing framework to mock the database listener
+  when executing tests and force certain failure behavior. To test how the driver manages
+  faulty connections to a database instance. <br> <br>
 `);
     content_container.appendChild(box_oracle_2);
     
     let box_leg = getBox("Language Engineering Group (UNAM) -- Research Assistant (part time)",
-                                "June 2022 - Dec. 2024",
+                                "Jun. 2022 - Dec. 2024",
 ` <br>
-  - Collaborated on the development of natural language hate-speech datasets,
-    scraping data, performing statistical analysis, and performing benchmarking
-    tasks with LLMs. <br>
-  - Designed and developed an online annotation tool for research assistants to
-    annotate data, yielding a human annotated dataset that safely handled sensitive
-    personal information, all while rigorously curating the annotation process for
-    the validity and integrity of the surveyed data. <br>
+  This was an informal position at the Language Engineering Group at UNAM. I
+  assisted in paper writing, experimental design, running data annotation experiments and more
+  for NLP projects focused on hate speech detection on social media. <br> <br>
+
+  I created a platform for data annotation, replacing an excel sheet the team was previously
+  relying on, that facilitated the accurate annotation of thousands of Tweets for hate speech
+  in Mexican Spanish. <br> <br>
+
+  This effort led to my co authorship on 5 peer reviewed NLP papers,
+  check them out in the Publications tab! <br> <br>
 `);
     content_container.appendChild(box_leg);
 
     let box_umich = getBox("University of Michigan - Research Assistant (part time)",
                                 "Aug. 2019 - Aug. 2021",
 ` <br>
-  - Utilized cloud computing resources to fine-tune neural networks such as
-  BiLSTMs and YOLOV4 for various scientific projects. <br>
-  - Managed a survey to measure code comprehension of assembly code
-  supplemented with code comments from the original source code <br>
+  Work study position at the University of Michigan - Ann Arbor. <br> <br>
+
+  I assisted in an experiment using YoloV4 to detect objects on the road from drive
+  videos to improve spatial awareness for self driving cars. <br> <br>
+
+  I also used google cloud instances to fine-tune BiLSTMs and Bert model for code
+  summarization tasks. The data for this experiment was compiled and annotated
+  on a crowd source platform. I designed the study, as well as compiled the data
+  for annotation.  <br> <br>
 `);
 
     content_container.appendChild(box_umich);
@@ -428,10 +441,10 @@ University of Michigan Ann Arbor - GPA: 3.4/4.0
         <br>
 
         In most climate literature, future projections of climate change impact on snowstorms
-        do not use the actual NWS definition of a blizzard. That's because this defintiion
+        do not use the actual NWS definition of a blizzard. That's because this definition
         classifies a blizzard based on the visibility from falling or blowing snow. i.e., it does
         not necessarily need to be snowing for a blizzard to be present. This creates
-        a disparity between weather forcasting and climate projections for these types
+        a disparity between weather forecasting and climate projections for these types
         of winter storms.
         <br>
 
@@ -442,7 +455,7 @@ University of Michigan Ann Arbor - GPA: 3.4/4.0
         <br>
 
         A dataset of blizzard events was created by combining NCEI's Storm Event dataset
-        and ERA5 gridded climate reanalysis data, and detection was done with various algorithms
+        and ERA5 girded climate reanalysis data, and detection was done with various algorithms
         using wind speed and snowfall, as well as snow density and snow surface temperature.
         Demonstrating that taking these variables into account improved substantially classification.
         <br> <br>
@@ -461,7 +474,7 @@ University of Michigan Ann Arbor - GPA: 3.4/4.0
         link: "https://github.com/SThomasen7/EncuestaHomoMex",
         desc: `
         This project was for the Language Engineering Group at UNAM, we were attempting to compile
-        a dataset of Tweets that contained LGBT+ - phobic speech in Mexican Spanish. We compiled
+        a dataset of Tweets that contained LGBT+-phobic speech in Mexican Spanish. We compiled
         the tweets but needed annotators to label the data appropriately. 
 
         <br>
@@ -518,14 +531,13 @@ University of Michigan Ann Arbor - GPA: 3.4/4.0
 
       // Add the tags to the end of the image:
       let tag_container = document.createElement("div");
-      tag_container.classList.add("flex", "flex-row");
+      tag_container.classList.add("flex", "flex-row", "flex-wrap");
       project.tags.forEach((tag) => {
         let tag_div = document.createElement("div");
         tag_div.innerHTML = tag.tag;
         tag_div.classList.add(
-          "inline-block", "item-center", 
-          "justify-center", "rounded-lg", "border", 
-          "border-zinc-600", "px-3", "py-2", "mx-2",
+          "rounded-lg", "border", 
+          "border-zinc-600", "px-3", "py-2",
           "font-medium", "text-slate-200", "shadow-md",
           "text-base", tag.color
         );

@@ -21,8 +21,8 @@ async function main() {
   }
 
   const [vsSource, fsSource] = await Promise.all([
-    fetch("shaders/shader.vert").then(r => r.text()),
-    fetch("shaders/shader.frag").then(r => r.text()),
+    fetch("/shaders/shader.vert").then(r => r.text()),
+    fetch("/shaders/shader.frag").then(r => r.text()),
   ]);
 
   const programInfo = twgl.createProgramInfo(gl, [vsSource, fsSource]);
