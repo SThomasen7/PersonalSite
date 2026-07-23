@@ -19,13 +19,13 @@ const Contents = (() => {
     let first_button = makeNavigationButton("Home", serveLanding, true);
     nav_div.appendChild(first_button);
     
-    let last_button = makeNavigationButton("Projects", serveProjects);
+    let last_button = makeNavigationButton("Resume");
     first_button.classList.add("rounded-l-lg");
     last_button.classList.add("rounded-r-lg");
 
-    nav_div.appendChild(makeNavigationButton("Contact", serveContact));
+    nav_div.appendChild(makeNavigationButton("Projects", serveProjects));
     nav_div.appendChild(makeNavigationButton("Publications", servePublications));
-    nav_div.appendChild(makeNavigationButton("Resume"));
+    nav_div.appendChild(makeNavigationButton("Contact", serveContact));
     nav_div.appendChild(last_button);
 
     // Build the primary content region
@@ -394,6 +394,8 @@ University of Michigan Ann Arbor - GPA: 3.4/4.0
         image: "/static/projects/plant_tracking_thumbnail.png",
         tags: [
                 {tag: "Python", color: "bg-yellow-700"},
+                {tag: "Machine Learning", color: "bg-green-700"},
+                {tag: "Deep Learning", color: "bg-green-700"},
                 {tag: "OpenCV", color: "bg-green-700"},
                 {tag: "Computer Vision", color: "bg-sky-700"},
               ]
@@ -449,6 +451,7 @@ University of Michigan Ann Arbor - GPA: 3.4/4.0
         image: "/static/projects/blizzard_detection.png",
         tags: [
                 {tag: "Python", color: "bg-yellow-700"},
+                {tag: "Machine Learning", color: "bg-green-700"},
                 {tag: "GeoSpatial Computing", color: "bg-sky-700"},
                 {tag: "Data Science", color: "bg-sky-700"},
               ]
@@ -478,6 +481,7 @@ University of Michigan Ann Arbor - GPA: 3.4/4.0
         tags: [
                 {tag: "Python", color: "bg-yellow-700"},
                 {tag: "Flask", color: "bg-green-700"},
+                {tag: "NginX", color: "bg-green-700"},
                 {tag: "Full Stack Development", color: "bg-sky-700"},
                 {tag: "Social Computing", color: "bg-sky-700"},
               ]
