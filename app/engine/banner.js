@@ -57,7 +57,7 @@ const Banner = (() => {
 
   function getPortrait(){
     const portrait = document.createElement("img");
-    portrait.src = "/static/Portrait.jpg";
+    portrait.src = "/static/cropped_portrait.jpg";
     portrait.alt= "handsome and professional portrait";
     portrait.width = 116;
     portrait.height = 132;
