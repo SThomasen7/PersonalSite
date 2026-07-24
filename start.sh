@@ -14,4 +14,5 @@ exec gunicorn \
   --timeout 30 \
   --graceful-timeout 20
   --access-logfile /var/log/personal-site/access.log \
-  --error-logfile /var/log/personal-site/error.log
+  --error-logfile /var/log/personal-site/error.log \
+  --proxy-headers
