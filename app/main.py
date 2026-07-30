@@ -25,7 +25,10 @@ def record_access(request):
             ip = request.client.host if request.client else "unknown"
 
         # Save to DB
-        cur.execute(f"insert into site_access values ('{ip}', current_timestamp)")
+        cur.execute(
+            "INSERT INTO site_access (ip, date) VALUES (?, CURRENT_TIMESTAMP)",
+            (ip,),
+        )
         conn.commit()
     except Exception as e:
         con = sqlite3.connect("/var/www/PersonalSite/app/sql/data.db")

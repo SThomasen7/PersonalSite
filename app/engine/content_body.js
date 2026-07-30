@@ -10,7 +10,7 @@ const Contents = (() => {
 
     // Build the navigation button 
     nav_div.classList = "";
-    nav_div.classList.add("flex", "flex-row", "mb-xl", "mt-xl");
+    nav_div.classList.add("flex", "flex-row", "my-[3px]", "md:mb-xl", "md:mt-xl");
 
     let current_tab = sessionStorage.getItem("currentTab");
     serveLanding();
@@ -30,9 +30,10 @@ const Contents = (() => {
 
     // Build the primary content region
     content_div.classList.add(
-      "w-[90vw]",                 "h-[72vh]",
+      "md:w-[90vw]",              "h-[72vh]",
+      "w-[94vw]", 		  "mt-[0px]",
       "rounded-md",               "p-1",
-      "mt-5",                     "mb-5",
+      "md:mt-5",                  "mb-5",
       "border-slate-600/40",      "bg-slate-800/65",
       "backdrop-blur-lg",         "shadow-lg",
       "border",                   "overflow-y-auto",
@@ -227,7 +228,7 @@ University of Michigan Ann Arbor - GPA: 3.4/4.0
 
     const contact_form = document.createElement("div");
     contact_form.classList.add("w-[95%]", "rounded-md", "bg-slate-800", 
-        "m-[10px]", "min-h-[100px]", "border-slate-500/40",
+        "m-[10px]", "border-slate-500/40",
         "shadow-lg", "border", "p-[20px]");
 
     contact_form.innerHTML = `
@@ -582,12 +583,13 @@ University of Michigan Ann Arbor - GPA: 3.4/4.0
       "item-center",          "justify-center",
                               "border",
       "border-zinc-600",      "bg-zinc-950",
-      "px-3",                 "py-2",
+      "md:px-3", "px-1",      "md:py-2",
       "font-medium",          "text-slate-200",
       "shadow-md",            "transition-all",
       "duration-300",         "hover:-translate-y-0.5",
-      "hover:shadow-xl",      "text-md",
-      "active:bg-zinc-950",   "active:border-zinc-950"
+      "hover:shadow-xl",      "md:text-md",
+      "active:bg-zinc-950",   "active:border-zinc-950",
+      "text-base",            "w-full"
     )
     button.textContent = name;
 
