@@ -111,7 +111,7 @@ const Banner = (() => {
   function makeTitle(){
     const titleDiv = document.createElement("div");
     titleDiv.innerHTML = `
-      <h1 class="text-4xl font-bold tracking-tight">Scott Thomas Andersen</h1>
+      <h1 class="text-3xl md:text-5xl font-bold tracking-tight">Scott Thomas Andersen</h1>
       <p class="text-xl font-bold tracking-tight">Senior Software Engineer</p>
       <br>
       <p>sthomasen7@gmail.com</p>
