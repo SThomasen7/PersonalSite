@@ -2,6 +2,7 @@ from fastapi import FastAPI, Form
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from typing import Annotated
+from urllib.parse import urlencode, parse_qsl
 import subprocess
 from email.message import EmailMessage
 import sqlite3
@@ -24,10 +25,15 @@ def record_access(request):
         else:
             ip = request.client.host if request.client else "unknown"
 
+        source = ""
+        if request.query_params.get("from", "") != "":
+            source = request.query_params.get("from", "")
+        elif request.query_params.get("f", "") != "":
+            source = request.query_params.get("f", "")
         # Save to DB
         cur.execute(
-            "INSERT INTO site_access (ip, date) VALUES (?, CURRENT_TIMESTAMP)",
-            (ip,),
+            "INSERT INTO site_access (ip, date, source) VALUES (?, CURRENT_TIMESTAMP, ?)",
+            (ip, source),
         )
         conn.commit()
     except Exception as e:
@@ -52,14 +58,38 @@ def record_access(request):
             input=msg.as_bytes(),
             check=True,
         )
-    
+
 @app.middleware("http")
 async def log_request(request: Request, call_next):
     if request.method == "GET" and request.url.path == "/":
         record_access(request)
 
+    if request.query_params.get('from', '') != '' \
+            or request.query_params.get('f', '') != '':
+        # Remove query parameter
+        params = dict(request.query_params)
+        if 'from' in params:
+            params.pop("from")
+        if 'f' in params:
+            params.pop("f")
+
+        new_url = str(request.url.path)
+        if params:
+            new_url += "?" + urlencode(params)
+
+        clean_url = request.url.replace_query_params()
+        return RedirectResponse(
+            url=new_url,
+            status_code=307
+        )
+
     response = await call_next(request)
     return response
+
+@app.get("/publications.html")
+async def old_publications():
+    return RedirectResponse(url="/?section=Publications", status_code=301)
+    
 
 @app.post("/contactme")
 async def login(name: Annotated[str, Form()], email: Annotated[str, Form()],

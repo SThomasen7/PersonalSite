@@ -41,12 +41,30 @@ const Contents = (() => {
       "items-center",
     );
 
+    const params = new URLSearchParams(window.location.search);
+    const section = params.get("section");
+ 
+    if(section == 'Home'){
+	serveLanding();
+    } else if(section == 'Projects'){
+        serveProjects();
+    } else if(section == 'Publications'){
+        servePublications();
+    } else if(section == 'Contact'){
+        serveContact();
+    }
+
+    const url = new URL(window.location.href);
+    url.searchParams.delete("section");
+    window.history.replaceState({}, "", url);
+
   }
 
   function serveLanding() {
     // Clear the content and add for this page
     sessionStorage.setItem('currentTab', 'home');
     content_div.innerHTML = "";
+    content_div.scrollTo(0, 0);
     const content_container = document.createElement("div");
     content_container.classList.add("flex", "flex-col", "items-center");
     content_div.appendChild(content_container);
@@ -563,6 +581,14 @@ University of Michigan Ann Arbor - GPA: 3.4/4.0
   function makeNavigationButton(name, callback=null, make_active=false){
     const button = document.createElement("button");
     button.id = "nav-button-"+name;
+
+    const params = new URLSearchParams(window.location.search);
+    const section = params.get("section");
+    if(section == name){
+	make_active = true;
+    } else if (section != null){
+        make_active = false;
+    }
 
     function make_button_active(button){
       button.classList.remove("bg-zinc-950"); 
