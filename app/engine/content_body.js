@@ -411,6 +411,44 @@ University of Michigan Ann Arbor - GPA: 3.4/4.0
     // List of projects
     let projects = [
       {
+        title: "C++ Render Engine",
+        link: "https://github.com/SThomasen7/3dmaze",
+        desc: `
+          Hobby C++ Renderer in OpenGL. Dynamically load scenes as defined from XML files.
+          Load asssets, apply dynamic lighting, apply textures and normal maps to assets.
+          An event driven communication system and entity-component architecture all built in C++.
+          Rendering is done through OpenGL, windowing system is through imgui, stb_image is used
+          for reading texture and normal maps, and glm is used for camera transformation calculations. <br>
+          This is a work in progress! I plan on expanding this into a basic maze game. Stay tuned.
+        `
+        image: "/static/projects/maze_renderer.png",
+        tags: [
+                {tag: "C++", color: "bg-yellow-700"},
+                {tag: "OpenGL", color: "bg-green-700"},
+                {tag: "Computer Graphics", color: "bg-sky-700"},
+              ]
+
+      },
+      {
+        title: "CUDA Ray Tracer",
+        link: "https://github.com/SThomasen7/CudaRayTracer",
+        desc: `
+        This is just one of many RayTracers that I have developed as a hobby project.
+        What I am particularly proud of this one is that it is developed using CUDA to
+        significantly speed up the rendering process. 
+        <br>
+        This was developed in C++ and uses CUDA to parallelize the per pixel ray casting
+        and object collision testing. 
+        <br> <br>
+        `,
+        image: "/static/projects/cuda_ray_tracer.jpg",
+        tags: [
+                {tag: "C++", color: "bg-yellow-700"},
+                {tag: "Cuda", color: "bg-green-700"},
+                {tag: "Computer Graphics", color: "bg-sky-700"},
+              ]
+      },
+      {
         title: "Plant Tracking",
         link: "https://github.com/SThomasen7/PlantTracking",
         desc: `
@@ -434,22 +472,30 @@ University of Michigan Ann Arbor - GPA: 3.4/4.0
               ]
       },
       {
-        title: "CUDA Ray Tracer",
-        link: "https://github.com/SThomasen7/CudaRayTracer",
+        title: "This website!",
+        link: "https://github.com/SThomasen7/PersonalSite",
         desc: `
-        This is just one of many RayTracers that I have developed as a hobby project.
-        What I am particularly proud of this one is that it is developed using CUDA to
-        significantly speed up the rendering process. 
-        <br>
-        This was developed in C++ and uses CUDA to parallelize the per pixel ray casting
-        and object collision testing. 
-        <br> <br>
+        This very website! This is kind of a portfolio / resume / chance to show myself off 
+        so someone like you will see it and hire me. (No pressure.) <br> <br>
+
+        It is written in Javascript, uses Tailwind CSS, and is hosted in a google cloud
+        compute instance. The background is rendered live with WebGL (with TWGL). 
+        The backend is uses fastapi for some simple statistics tracking.  <br>
+
+        If you see any issues, please report them! You can help me improve it. Feel free
+        to email me directly using the contact section or by sending an email to the address
+        in the banner.
         `,
-        image: "/static/projects/cuda_ray_tracer.jpg",
+        image: "/static/projects/website_example_meta.png",
         tags: [
-                {tag: "C++", color: "bg-yellow-700"},
-                {tag: "Cuda", color: "bg-green-700"},
-                {tag: "Computer Graphics", color: "bg-sky-700"},
+                {tag: "Javascript", color: "bg-yellow-700"},
+                {tag: "Python", color: "bg-yellow-700"},
+                {tag: "SQL", color: "bg-yellow-700"},
+                {tag: "FastAPI", color: "bg-green-700"},
+                {tag: "NginX", color: "bg-green-700"},
+                {tag: "WebGL", color: "bg-green-700"},
+                {tag: "Web Development", color: "bg-sky-700"},
+                {tag: "Cloud Computing", color: "bg-sky-700"},
               ]
       },
       {

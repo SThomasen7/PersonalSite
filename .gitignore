@@ -1,5 +1,6 @@
 *.swp
 venv
+__pycache__/*
 __pycache__
 email_logs.txt
 data.db
