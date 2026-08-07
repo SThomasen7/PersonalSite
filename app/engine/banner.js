@@ -48,7 +48,8 @@ const Banner = (() => {
       "flex-col-reverse",
       "mr-[0px]",
       "md:w-auto",
-      "shrink-1"
+      "shrink-1",
+      "w-[65px]",
     );
 
     banner_items.appendChild(makeIcons());
@@ -71,7 +72,7 @@ const Banner = (() => {
     portrait.alt= "handsome and professional portrait";
     portrait.classList.add(
         "md:w-[116px]", "md:h-[132px]",
-        "w-[35%]", "h-[40%]"
+        "w-[55px]", "h-[63px]"
     )
 
     

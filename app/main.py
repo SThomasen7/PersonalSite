@@ -30,6 +30,9 @@ def record_access(request):
             source = request.query_params.get("from", "")
         elif request.query_params.get("f", "") != "":
             source = request.query_params.get("f", "")
+        elif referrer := request.headers.get("referer"):
+            source = referrer
+
         # Save to DB
         cur.execute(
             "INSERT INTO site_access (ip, date, source) VALUES (?, CURRENT_TIMESTAMP, ?)",
