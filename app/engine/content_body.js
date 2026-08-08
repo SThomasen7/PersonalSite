@@ -270,6 +270,7 @@ University of Michigan Ann Arbor - GPA: 3.4/4.0
   function serveContact(){
     sessionStorage.setItem('currentTab', 'contact');
     content_div.innerHTML = "";
+    content_div.scrollTo(0, 0);
 
     const contact_form = document.createElement("div");
     contact_form.classList.add("w-[95%]", "rounded-md", "bg-slate-800", 
@@ -309,6 +310,7 @@ University of Michigan Ann Arbor - GPA: 3.4/4.0
   function servePublications(){
     sessionStorage.setItem('currentTab', 'publications');
     content_div.innerHTML = "";
+    content_div.scrollTo(0, 0);
 
     const content_container = document.createElement("div");
     content_container.classList.add("flex", "flex-col", "items-center");
@@ -409,6 +411,7 @@ University of Michigan Ann Arbor - GPA: 3.4/4.0
   function serveProjects(){
     sessionStorage.setItem('currentTab', 'projects');
     content_div.innerHTML = "";
+    content_div.scrollTo(0, 0);
 
     const content_container = document.createElement("div");
     content_container.classList.add("flex", "flex-col", "items-center");
