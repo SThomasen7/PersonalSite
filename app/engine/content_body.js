@@ -68,6 +68,33 @@ const Contents = (() => {
     const content_container = document.createElement("div");
     content_container.classList.add("flex", "flex-col", "items-center");
     content_div.appendChild(content_container);
+    content_container.appendChild(sectionDelimiter("Hello world!"));
+    let hello_world_box = getBox("", "",
+	    `
+    <p>
+    I'm Scott, currently I work remote as a software developer at Oracle. I live
+    in Mexico City but am a U.S. citizen and authorized to work in the United States. <br> <br>
+    </p>
+
+    <p>
+    I've worked in many areas and with many languages but am interested in finding a more
+    development-focused role preferably with C++. I enjoy exploring graphics programming and
+    computer vision, and am trying to get more into computer simulation particularly rendering
+    fluid simulations. I've also been working on contributing more to free and open-source
+    software, you can check out my progress in that endeavour on my 
+    <a target=_blank href="https://github.com/SThomasen7" class="hover:text-teal-700">Github</a>.  <br> <br>
+    </p>
+
+    <p>
+    Outside of that I enjoy reading, hanging out with my cat, hiking with friends or playing board games. <br> <br>
+    </p>
+
+    <p>
+    If you came to this site and like what you see feel free to reach out to me! Let's discuss project
+    ideas, job opportunities, or exchange cat pictures.
+    </p>
+	    `);
+    content_container.appendChild(hello_world_box);
     
     content_container.appendChild(sectionDelimiter("Experience"));
     let box_oracle_1 = getBox("Oracle -- Senior Member of the Technical Staff",
@@ -420,14 +447,13 @@ University of Michigan Ann Arbor - GPA: 3.4/4.0
           Rendering is done through OpenGL, windowing system is through imgui, stb_image is used
           for reading texture and normal maps, and glm is used for camera transformation calculations. <br>
           This is a work in progress! I plan on expanding this into a basic maze game. Stay tuned.
-        `
+        `,
         image: "/static/projects/maze_renderer.png",
         tags: [
                 {tag: "C++", color: "bg-yellow-700"},
                 {tag: "OpenGL", color: "bg-green-700"},
                 {tag: "Computer Graphics", color: "bg-sky-700"},
               ]
-
       },
       {
         title: "CUDA Ray Tracer",
