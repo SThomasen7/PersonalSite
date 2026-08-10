@@ -73,7 +73,7 @@ const Contents = (() => {
 	    `
     <p>
     I'm Scott, currently I work remote as a software developer at Oracle. I live
-    in Mexico City but am a U.S. citizen and authorized to work in the United States. <br> <br>
+    in Mexico City, however I am a U.S. citizen and can work in the United States without authorization. <br> <br>
     </p>
 
     <p>
@@ -91,7 +91,7 @@ const Contents = (() => {
 
     <p>
     If you came to this site and like what you see feel free to reach out to me! Let's discuss project
-    ideas, job opportunities, or exchange cat pictures.
+    ideas, job opportunities or whatever else!
     </p>
 	    `);
     content_container.appendChild(hello_world_box);
